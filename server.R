@@ -5,6 +5,7 @@ library(randomForest)
 library(kernlab)
 library(caret)
 library(class)
+library(e1071)
 
 shinyServer(function(input, output) {
   

@@ -1,5 +1,6 @@
 library(shiny)
 library(ggplot2)
+library(e1071)
 
 
 shinyUI(fluidPage(
@@ -58,7 +59,39 @@ shinyUI(fluidPage(
                  h3("Training results summary"),
                  tableOutput("predictionStats")
                  
-        ) # end tab panel 2
+        ), # end tab panel 2
+        
+        tabPanel("Help",
+          h3("App purpose"),
+          p("This applications allows you to test some basic Machine Learning models 
+            (like SVM, KNN, Random Forest) on some toy example - classical Iris Data. You can
+            play with different parameters and tune them to get the best results"),
+          h3("Usage"),
+          p("In the 'Iris data' panel you can see a data. You can inspect it visually/sort/subset, etc.
+            Target variable/dependent variale is for this dataset the species of Iris flowers."),
+          p("On the left panel you can find different configurtion options:"),
+          
+          h4("Training data percentage"),
+          p("With this slider you can set the amount (%) of training data used to train the model"),
+          
+          h4("Data normalization"),
+          p("With this option you can decide if you want to normalize all data columns to range 0-1. 
+            Algorithms like SVM take benefit from such operation."),
+          
+          h4("Training method and parameters"),
+          p("With this dropdown you can select algorithm you want. Additional configuration options will
+            appear - depending on the specific algorithm. Once you are ready, hit the 'Train model' button"),
+          
+          h4("Training results tab"),
+          p("This tab presents the training results. The first element is confusion matrix - showing
+            the actual vs predcted values. You can inspect it visually to see which classes were better
+            performing."),
+          p("Below the confusion matrix, you can find the numerical classification quality measures, like
+            accuracy, null hypothesis performance, etc. You can tune algorithms parameters to get better results."),
+          p(""),
+          p("Good luck!")
+          
+        ) # end tab panel 3
         
       ) # end tabset panel
       
